@@ -5,7 +5,7 @@
 
 void metadatas() {
     std::cout << "Tic Tac Toe game done in C++\n";
-    std::cout << "Version Beta\n";
+    std::cout << "Version Beta +2\n";
     std::cout << "Made by Caio Silva Couto\n";
     std::cout << "GitHub: https://github.com/th3worst4" << std::endl << std::endl;
 }
@@ -79,15 +79,44 @@ void new_game(bool player_round) {
         std::cout << std::endl << std::endl;
         player_round = !player_round;
 
+        insert_column:
         std::cout << "Insert the column number where you wish to position: ";
         std::cin >> col;
+        if (col > 3 || col < 1) {
+            std::cout << "Insert a valid column!" << std::endl;
+            goto insert_column;
+        }
+        
+        insert_row:
         std::cout << "Insert the row number where you wish to position: ";
         std::cin >> row;
+        if (row > 3 || row < 1) {
+            std::cout << "Insert a valid row!" << std::endl;
+            goto insert_row;
+        }
 
         switch (row) {
-        case 1: top_row[col - 1] = symb; break;
-        case 2: middle_row[col - 1] = symb; break;
-        case 3: bottom_row[col - 1] = symb; break;
+        case 1: if (top_row[col - 1] == ' ') {
+            top_row[col - 1] = symb;
+        }
+              else {
+            std::cout << "You can not position here!" << std::endl;
+            goto insert_column;
+        } break;
+        case 2: if (middle_row[col - 1] == ' ') {
+            middle_row[col - 1] = symb;
+        }
+              else {
+            std::cout << "You can not position here!"<<std::endl;
+            goto insert_column;
+        } break;
+        case 3: if (middle_row[col - 1] == ' ') {
+            middle_row[col - 1] = symb;
+        }
+              else {
+            std::cout << "You can not position here!" << std::endl;
+            goto insert_column;
+        } break;
         }
         round++;
         std::cout << std::endl;
