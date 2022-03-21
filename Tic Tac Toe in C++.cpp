@@ -110,8 +110,8 @@ void new_game(bool player_round) {
             std::cout << "You can not position here!"<<std::endl;
             goto insert_column;
         } break;
-        case 3: if (middle_row[col - 1] == ' ') {
-            middle_row[col - 1] = symb;
+        case 3: if (bottom_row[col - 1] == ' ') {
+            bottom_row[col - 1] = symb;
         }
               else {
             std::cout << "You can not position here!" << std::endl;
